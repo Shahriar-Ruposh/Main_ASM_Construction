@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+        <!-- Start Bradcaump area -->
+    {% for mainlogo in mainlogo %}
+        <div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({{mainlogo.main_logo.url}}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-bottom">
+                                <h2 class="bradcaump-title">About Us</h2>
+                                <nav class="bradcaump-inner">
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <!-- End Bradcaump area -->
+        <!-- Start Blog Area -->
+        <section class="htc__project__details__page ptb--150 bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                        <div class="htc__single__service">
+                            <div class="htc__single__service__tab">
+                                <div class="ht-portfolio-pic-show">
+                                    <div class="ht-portfolio-full-image tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
+                                            <img src="{{single_projects.project_image.url}}" alt="full-image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Start Small images -->
+                                <div class="ht__service__small__image nav nav-tabs clearfix">
+                                    <ul role="tablist" class="prodict-det-small  clearfix">
+                                        {% for i in projectgallery_set %}
+                                        <li role="presentation" class="pot-small-img img-tab-1 active">
+                                            <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                                <img src="{{i.image.url}}" alt="small-image">
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- End Small images --> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="single__project__rightsidebar">
+                            <!-- Start Single Item -->
+                            <div class="pro__dtl__inner bg__gray">
+                                <h2>PROJECT DETAILS</h2>
+                                <div class="pro__dtl__content">
+                                    <ul class="pro__dtl__list font__bold">
+                                        <li>CLIENT : {{single_projects.project_clint}}</li>
+                                        <li>LOCATION : {{single_projects.project_location}}</li>
+                                        <li>BUDGET : {{single_projects.project_budget}}</li>
+                                        <li>SURFCE AREA :{{single_projects.project_surfce_area}}</li>
+                                        <li>SECTOR : {{single_projects.project_category}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                            <!-- Start Single Item -->
+                            <!-- End Single Item -->
+                        </div>
+                    </div>
+                </div>
+                <div class="htc__service__dtl">
+                                <!-- Start Single Service -->
+                                <div class="htc__ser__dtl">
+                                    <h2 class="title__line--4">{{single_projects.project_title}}</h2>
+                                    <p> {{single_projects.project_content | safe}}</p>
+                                </div>
+                            </div>
+            </div>
+        </section>
+
+{% endblock content %}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+        <section class="htc__blog__details__page blog--details ptb--150 bg__white">
+            <div class="container">
+                <div class="row">
+                	<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                        <div class="htc__bl__dtl__inner">
+                            <div class="blog__inner">
+                                <div class="blog__thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ post.thubnail.url }}" alt="blog image">
+                                    </a>
+                                    <div class="blog__hover__info">
+                                        <ul class="blog__meta">
+                                            <li>By : <a href="#">{{post.author}}</a></li>
+                                            <li>20 July</li>
+                                            <li><a href="#">{{post.comment_count}}</a></li>
+                                            <li><a href="#">{{post.view_count}}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="htc__blog__details">
+                                    <h2>{{post.title}}</h2>
+                                    <div class="bl__dtl">
+                                        <p>{{post.overview|safe}}</p>
+
+                                    </div>
+                                </div>
+                                <ul class="pre__next__btn">
+                                    {% if post.previous_post %}
+                                    <li><a href="{{ post.previous_post.get_absolute_url }}"><i class="fa fa-angle-left"></i>Old Post</a></li>
+                                    {% endif %}
+                                    {% if post.next_post %}
+                                    <li><a href="{{ post.next_post.get_absolute_url }}">Next Post<i class="fa fa-angle-right"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- Start Blog Comment -->
+                            <div class="htc__comment__area">
+                                <h2 class="title__line--3">COMMENTS<span class="no-of-comments">({{ post.comments.count }})</span></h2>
+                                <div class="htc__comment__inner">
+                                    <!-- Start Single Comment -->
+                                    {% for comment in post.get_comments %}
+                                    <div class="single__comment">
+                                        <div class="bl__comment__details">
+                                            <div class="bl__comment__meta">
+                                                <h2><a href="#">{{ comment.user.username }}</a></h2>
+                                                <span>{{ comment.timestamp|timesince }} ago</span>
+                                            </div>
+                                            <p> {{ comment.content }} </p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <!-- End Blog Comment -->
+                            <!-- Start Blog Comment Form -->
+                            <div class="bl__comment__form">
+                                <h2 class="title__line--3">LEAVE A REPLY</h2>
+                     <form method="POST" action="." class="commenting-form">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                        {{ form }}
+                      </div>
+                      <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                      </div>
+                    </div>
+                  </form>
+                            </div>
+                            <!-- End Blog Comment Form -->
+                        </div>
+                	</div>
+               {% include 'sidebar.html' with most_recent=most_recent catagory_count=catagory_count  %}
+                </div>
+            </div>
+        </section>
+
+
+{% endblock content %}
+

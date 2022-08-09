@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    {% for mainlogo in mainlogo %}
+        <div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({{mainlogo.main_logo.url}}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-bottom">
+                                <h2 class="bradcaump-title">About Us</h2>
+                                <nav class="bradcaump-inner">
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <!-- End Bradcaump area -->
+        <!-- Start Blog Area -->
+        <section class="htc__blog__area ptb--150 bg__white">
+            <div class="container">
+                <div class="row">
+                	<div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                		<div class="htc__blog__wrap clearfix blog--one">
+	                        <!-- Start Single Blog -->
+                            {% for artical in queryset %}
+                            <div class="blog">
+                                <div class="blog__thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{artical.thubnail.url}}" alt="blog image">
+                                    </a>
+                                    <div class="blog__hover__info">
+                                        <ul class="blog__meta">
+                                            <li>By : <a href="#">{{artical.author}}</a></li>
+                                            <li>{{artical.timestamp}}</li>
+                                            <li><a href="#">{{artical.comment_count}}</a></li>
+                                            <li><a href="#">{{artical.view_count}}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="blog__details">
+                                    <h2><a href="blog-details.html">{{artical.overview|striptags|slice:'100'}}</a></h2>
+                                    <div class="blog__btn">
+                                        <a href="blog-details.html">READ MORE<i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+	                        <!-- End Single Blog -->
+                    	</div>
+                	</div>
+               {% include 'sidebar.html' with most_recent=most_recent catagory_count=catagory_count  %}
+                    <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                {% if queryset.has_previous %}
+                <li class="page-item"><a href="?{{page_req}}= {{queryset.previous_page_number}}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                {% endif %}
+                <li class="page-item"><a href="#" class="page-link active">{{queryset.number}}</a></li>
+<!--                <li class="page-item"><a href="#" class="page-link">2</a></li>-->
+<!--                <li class="page-item"><a href="#" class="page-link">3</a></li>-->
+                {% if queryset.has_next %}
+                <li class="page-item"><a href="?{{page_req}}={{queryset.next_page_number}}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                {% endif %}
+              </ul>
+            </nav>
+                </div>
+            </div>
+        </section>
+
+{% endblock content %}

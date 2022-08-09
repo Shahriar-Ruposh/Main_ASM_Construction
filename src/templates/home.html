@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="slider__container">
+            <div class="slider__activation__wrap owl-carousel owl-theme">
+              {% for mainlogo in mainlogo %}
+                <div class="slide slider__fixed--height slide__align--center" style="background: rgba(0, 0, 0, 0) url({{mainlogo.main_logo.url}}) no-repeat scroll 0 0 / cover;" data--black__overlay="2">
+                  {% endfor %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="slider__inner">
+                                    <div class="slider__btn">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+<section class="htc__offer__area htc__offer--2 pb--120 bg__gray">
+        <div class="container">
+          <div class="row">
+            {% for quality in qualities %}
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+              <div class="offer separator">
+              <div class="offer">
+                <div class="offer__icon">
+                  <!-- "{% static 'images/others/icon-2/1.png' %}" -->
+                  <img
+                    src="{{quality.quality_logo.url}}"
+                    alt="icon images"
+                  />
+                </div>
+                <div class="offer__details">
+                  <h2><a href="#">{{quality.quality_title}}</a></h2>
+                  <p>
+                      {{quality.quality_content|truncatewords:20}}
+                  </p>
+                </div>
+              </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+<section class="htc__service__area service--2 bg__gray">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="service__section__wrap clearfix">
+              <!-- Start Single Service -->
+              <div class="col-md-5 col-lg-4 col-sm-12 col-xs-12">
+                {% for mainlogo in mainlogo%}
+                <div class="service__thumb">
+
+                  <img
+                    src="{{mainlogo.service_logo.url}}"
+                    alt="about image"
+                  />
+                </div>
+                {% endfor %}
+              </div>
+
+              <div
+                class="col-md-7 col-lg-8 col-sm-12 col-xs-12 h1__service pt--40 pb--30"
+              >
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="section__title text-left">
+                      <h2 class="title__line">
+                        OUR <span class="text--theme">SERVICES</span>
+                      </h2>
+                      <p>
+                        On the other hand, we denounce with righteous
+                        indignation and dislike men who are so beguiled and
+                        demoralized by the charms of pleasure of the moment, so
+                        blinded by desire, that they cannot foresee the pain and
+                        trouble
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- Start Single Service -->
+                  {% for service in services %}
+                  <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+                    <div class="service">
+                      <div class="service__thumb">
+                        <a href="single-service.html">
+                          <img
+                            src="{{service.service_image.url}}"
+                            alt="service images"
+                            width="323" height="242"
+
+                          />
+                        </a>
+                        <div class="service__hover">
+                          <div class="service__action">
+                            <a href="single-service.html">DETAILS</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="service__details">
+                        <h2><a href="single-service.html">{{service.service_title}}</a></h2>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section class="htc__latest__project__area ptb--150 bg__white text__pos">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="section__title text-center">
+                <h2 class="title__line">
+                  LATEST <span class="text--theme">PROJECTS</span>
+                </h2>
+                <p>
+                  On the other hand, we denounce with righteous indignation and
+                  dislike men who are so beguiled and demoralized by the charms
+                  of pleasure of the moment, so blinded by desire
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="htc__latest__project__wrap h1__project clearfix mt--30">
+              {% for project in project %}
+              {% if forloop.first %}
+              <div class="col-md-5 col-lg-5 hidden-sm col-xs-12">
+                <div class="project__itm foo">
+                  <div class="project__thumb">
+                    <a href="single-project.html">
+                      <img
+                        src="{{project.project_image.url}}"
+                        alt="project images"
+                        width="470" height="557"
+                      />
+                    </a>
+                    <div class="project__hover__info">
+                      <div class="project__action">
+                        <h2><a href="single-project.html">{{project.project_category}}</a></h2>
+                        <h4>{{project.project_title}}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <!-- End Single Project -->
+              <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="project__itm foo">
+                      <div class="project__thumb">
+                        <a href="single-project.html">
+                          <!-- "{% static 'images/lst-project-3/2.jpg' %}" -->
+                          <img
+                            src="{{project.project_image.url}}"
+                            alt="project images"
+                          />
+                        </a>
+                        <div class="project__hover__info">
+                          <div class="project__action">
+                            <h2>
+                              <a href="single-project.html">{{project.project_category}}</a>
+                            </h2>
+                            <h4>{{project.project_title}}</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="text__shape">
+          <h2>PROJECTS</h2>
+        </div>
+      </section>
+
+<section class="htc__blog__area pt--150 bg__white">
+        <div class="container">
+          <div class="row">
+            <div class="section__title text-center">
+              <h2 class="title__line">
+                LATEST <span class="text--theme">BLOG</span>
+              </h2>
+              <p>
+                On the other hand, we denounce with righteous indignation and
+                dislike men who are so beguiled and demoralized by the charms of
+                pleasure of the moment, so blinded by desire
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="htc__blog__wrap mt--30 clearfix">
+              <!-- Start Single Blog -->
+              {% for blog in blogs %}
+              <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                <div class="blog foo">
+                  <div class="blog__thumb">
+                    <a href="blog-details.html">
+                      <!-- "" -->
+                      <img
+                        src="{{blog.thubnail.url}}"
+                        alt="blog image"
+                        width="370" height="237"
+                      />
+                    </a>
+                    <div class="blog__hover__info">
+                      <ul class="blog__meta">
+                        <li>By : <a href="#">{{blog.author}}</a></li>
+                        <li>{{blog.timestamp}}</li>
+                        <li><a href="#">{{blog.comment_count}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="blog__details">
+                    <h2>
+                      <a href="blog-details.html"
+                        >{{blog.title}}
+                      </a>
+                      <br>
+                       <br>
+                      <a href="blog-details.html"
+                        >{{blog.overview|striptags|slice:':100'}}
+                      </a>
+                    </h2>
+                    <div class="blog__btn">
+                      <a href="blog-details.html"
+                        >READ MORE<i class="zmdi zmdi-long-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section
+        class="htc__team__area bg__white h1__team--one ptb--150 text__pos"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="section__title text-center">
+                <h2 class="title__line">
+                  OUR <span class="text--theme">TEAM</span>
+                </h2>
+                <p>
+                  On the other hand, we denounce with righteous indignation and
+                  dislike men who are so beguiled and demoralized by the charms
+                  of pleasure of the moment, so blinded by desire
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="htc__team__wrap clearfix mt--30">
+              <!-- Start Single Team -->
+              {% for profile in profile %}
+              <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                <div class="team foo">
+                  <div class="team__inner">
+                    <div class="team__thumb">
+                      <!-- "{% static 'images/team/1.jpg' %}" -->
+                      <img
+                        src="{{profile.pro_pic.url}}"
+                        alt="team image"
+                        width="270" height="249"
+                      />
+                    </div>
+                    <div class="team__hover__info">
+                      <ul class="team__social__link">
+                        <li>
+                          <a href="#" target="_blank"
+                            ><i class="fa fa-twitter"></i
+                          ></a>
+                        </li>
+
+                        <li>
+                          <a href="#" target="_blank"
+                            ><i class="fa fa-instagram"></i
+                          ></a>
+                        </li>
+
+                        <li>
+                          <a href="#" target="_blank"
+                            ><i class="fa fa-facebook"></i
+                          ></a>
+                        </li>
+
+                        <li>
+                          <a href="#" target="_blank"
+                            ><i class="fa fa-google-plus"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="team__details">
+                    <h2><a href="#">{{profile.full_name}}</a></h2>
+                    <h4>{{profile.deg}}</h4>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              <!-- End Single Team -->
+            </div>
+          </div>
+        </div>
+        <div class="text__shape">
+          <h2>TEAM</h2>
+        </div>
+      </section>
+
+{% endblock content %}

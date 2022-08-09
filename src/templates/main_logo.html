@@ -1,0 +1,19 @@
+ {% load static %}
+
+    {% for mainlogo in mainlogo %}
+        <div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({{mainlogo.main_logo.url}}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-bottom">
+                                <h2 class="bradcaump-title">About Us</h2>
+                                <nav class="bradcaump-inner">
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}

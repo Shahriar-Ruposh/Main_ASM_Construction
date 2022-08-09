@@ -1,0 +1,18 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+{% include 'head.html' %}
+<body>
+    <div class="wrapper">
+
+        {% include 'header.html' %}
+        {%  block content  %}
+        {% endblock content %}
+        {% include 'brands.html' %}
+        {% include "footer.html" %}
+    </div>
+
+{% include "scripts.html" %}
+</body>
+  <script src="{% static 'tinymce/js/prism.js' %}"></script>
+</html>

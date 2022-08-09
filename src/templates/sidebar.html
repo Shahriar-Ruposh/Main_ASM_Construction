@@ -1,0 +1,46 @@
+<div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 smt-40 xmt-40">
+                		<div class="htc__page__sidebar">
+                			<div class="htc__search__area bg__gray">
+                				<h2 class="sidebar__title">SEARCH</h2>
+								<form action="{% url 'search' %}" class="search-form">
+                				<div class="pro__input__box">
+									<input type="search" name="q" type="text" placeholder="Search here...">
+                					<button type="submit" class="submit"> <i class="fa fa-search"></i></button>
+
+                				</div>
+									</form>
+                			</div>
+
+                            <div class="htc__recent__post bg__gray sidebar__separator">
+                				<h2 class="sidebar__title">RECENT POST</h2>
+                				<div class="recent__post__wrap">
+                                    {% for post in most_recent %}
+	                				<div class="htc__single__post">
+	                					<div class="post__thumb">
+	                						<a href="blog-details.html"><img src="{{post.thubnail.url}}" alt="recent post img"></a>
+	                					</div>
+	                					<div class="post__details">
+	                						<h4><a href="blog-details.html">{{post.overview|striptags|slice:'50'}}</a></h4>
+	                						<div class="post__meta">
+	                							<span>{{post.author}}</span>
+	                							<span>{{post.timestamp}}</span>
+	                						</div>
+	                					</div>
+	                				</div>
+                                    {% endfor %}
+                				</div>
+                			</div>
+
+                			<div class="htc__category bg__gray sidebar__separator">
+                				<h2 class="sidebar__title">CATEGORIES</h2>
+                				<ul class="cat__list">
+                                    {% for cat in catagory_count %}
+                					<li><a href="#">{{cat.categories__name}}</a></li>
+                                    {% endfor %}
+                				</ul>
+                			</div>
+
+
+
+                		</div>
+                	</div>
